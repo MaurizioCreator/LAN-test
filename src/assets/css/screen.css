@@ -308,9 +308,6 @@ table,
   margin-right: 300px;
   margin-bottom: 0;
 }
-.header .right_block .right_part .traffic-congestion_container {
-  margin-right: 40px;
-}
 .header .right_block .right_part .city_data_container {
   display: flex;
   flex-direction: column;
@@ -379,9 +376,6 @@ table,
   }
   .header .right_block .right_part .search-wrapper {
     margin-right: 150px;
-  }
-  .header .right_block .right_part .traffic-congestion_container {
-    margin-right: 35px;
   }
   .header .right_block .right_part .city_data_container .city_data .time_container {
     margin-left: 30px;
