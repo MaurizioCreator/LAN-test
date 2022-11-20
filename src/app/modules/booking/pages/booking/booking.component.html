@@ -1,0 +1,153 @@
+<div class="page_content">
+    <div class="form_container">
+        <h3>Бронирование номера</h3>
+        <form
+            class="form"
+            *ngIf="roomTypes$ | async as roomTypes"
+            action=""
+            [formGroup]="bookingForm"
+            novalidate
+            (ngSubmit)="submit()"
+        >
+            <div class="input_container">
+                <label for="input_first_name">
+                    Введите имя<span style="color: red">*</span>
+                </label>
+                <input
+                    type="text"
+                    id="input_first_name"
+                    formControlName="firstName"
+
+                >
+                <div [hidden]="bookingForm.controls.firstName.valid || notSent" style="color: red">
+                    Некорректные данные
+                </div>
+            </div>
+
+
+            <div class="input_container">
+                <label for="input_last_name">
+                    Введите фамилию<span style="color: red">*</span>
+                </label>
+                <input
+                    type="text"
+                    id="input_last_name"
+                    formControlName="lastName"
+                >
+                <div [hidden]="bookingForm.controls.lastName.valid || notSent" style="color: red">
+                    Некорректные данные
+                </div>
+            </div>
+
+
+            <div class="input_container">
+                <label for="input_patronymic_name">
+                    Введите отчество
+                </label>
+                <input
+                    type="text"
+                    id="input_patronymic_name"
+                    formControlName="patronymicName"
+                >
+                <div [hidden]="bookingForm.controls.patronymicName.valid || notSent" style="color: red">
+                    Некорректные данные
+                </div>
+
+            </div>
+
+            <div class="input_container">
+                <label for="input_birthday">
+                    Введите дату рождения
+                </label>
+                <input
+                    type="date"
+                    id="input_birthday"
+                    formControlName="birthday"
+                >
+            </div>
+
+            <div class="input_container">
+                <label for="select_room_type">
+                    Выбирите тип номера<span style="color: red">*</span>
+                </label>
+                <select id="select_room_type" formControlName="roomType" (change)="setCountOfGuests()">
+                    <option [ngValue]="null" selected disabled>Выберите тип номера</option>
+                    <option *ngFor="let type of roomTypes" [ngValue]="type.id">
+                        {{type.name}}
+                    </option>
+                </select>
+                <div [hidden]="bookingForm.controls.roomType.valid || notSent" style="color: red">
+                    Заполните поле
+                </div>
+            </div>
+
+
+            <div class="input_container">
+                <label for="count_of_guests">
+                    Введите количество гостей<span style="color: red">*</span>
+                </label>
+                <input
+                    type="number"
+                    [max]="maxValueGuests"
+                    id="count_of_guests"
+                    formControlName="countOfGuests"
+                    [attr.disabled]="lockCountInput ? '' : null"
+                >
+                <div [hidden]="bookingForm.controls.countOfGuests.valid || notSent" style="color: red">
+                    Некорректное количество гостей для данного типа номера
+                </div>
+            </div>
+
+            <div class="input_container">
+                <label for="input_start_date">
+                    Выберите дату заезда<span style="color: red">*</span>
+                </label>
+                <input
+                    type="date"
+                    id="input_start_date"
+                    formControlName="startDate"
+                >
+                <div [hidden]="bookingForm.controls.startDate.valid || notSent" style="color: red">
+                    Заполните поле
+                </div>
+            </div>
+
+
+            <div class="input_container">
+                <label for="input_end_date">
+                    Выберите дату выезда<span style="color: red">*</span>
+                </label>
+                <input
+                    type="date"
+                    id="input_end_date"
+                    formControlName="endDate"
+                >
+                <div [hidden]="bookingForm.controls.endDate.valid || notSent" style="color: red">
+                    Заполните поле
+                </div>
+            </div>
+
+
+            <div class="checkbox">
+                <label for="input_with_animal">
+                    С животными
+                </label>
+                <input
+                    type="checkbox"
+                    id="input_with_animal"
+                    formControlName="withAnimal"
+                    [attr.disabled]="lockCheckbox ? '' : null"
+                >
+            </div>
+            <div [hidden]="notSent || bookingForm.valid" style="color: red">
+                Заполните все необходимые поля корректно
+            </div>
+            <button
+                class="btn_b"
+                type="submit"
+            >
+                Забронировать
+            </button>
+        </form>
+    </div>
+</div>
