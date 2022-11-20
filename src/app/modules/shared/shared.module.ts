@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { WeatherService } from '@shared/services';
+import {FormControlService, WeatherService} from '@shared/services';
 
 
 @NgModule({
@@ -20,7 +20,8 @@ import { WeatherService } from '@shared/services';
         FormsModule
     ],
     providers: [
-        WeatherService
+        WeatherService,
+        FormControlService,
     ]
 })
 export class SharedModule { }

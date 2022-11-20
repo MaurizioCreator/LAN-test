@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -22,13 +24,15 @@ import { NavigationModule } from '@navigation/navigation.module';
 @NgModule({
     declarations: [
         AppComponent,
-        ...LAYOUTS
+        ...LAYOUTS,
     ],
     imports: [
         CommonModule,
         BrowserModule,
         HttpClientModule,
         BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
 
         StoreModule.forRoot({
             signalr: signalrReducer,

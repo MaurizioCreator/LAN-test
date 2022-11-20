@@ -16,6 +16,9 @@
             "@home/*": [
                 "src/app/modules/home/*"
             ],
+            "@booking/*": [
+                "src/app/modules/booking/*"
+            ],
             "@shared/*": [
                 "src/app/modules/shared/*"
             ],
