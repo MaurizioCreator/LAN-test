@@ -12,8 +12,7 @@ import {SharedModule} from '../shared/shared.module';
 import {PAGES} from './pages';
 import {EFFECTS} from './state/effects';
 import {StoreModule} from '@ngrx/store';
-import {BookingFormFeatureName, RoomTypesFeatureName} from './state/selectors';
-import * as reducer from './state/reducers';
+import {BookingModuleFeatureName, reducers} from './state';
 
 
 @NgModule({
@@ -27,8 +26,7 @@ import * as reducer from './state/reducers';
         ReactiveFormsModule,
 
         EffectsModule.forFeature(EFFECTS),
-        StoreModule.forFeature(RoomTypesFeatureName, reducer.reducer),
-        StoreModule.forFeature(BookingFormFeatureName, reducer.bookingReducer),
+        StoreModule.forFeature(BookingModuleFeatureName, reducers),
         BookingRoutingModule,
         BookingServicesModule,
         SharedModule,

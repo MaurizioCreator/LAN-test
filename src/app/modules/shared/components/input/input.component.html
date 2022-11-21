@@ -1,0 +1,9 @@
+<div class="input_container">
+    <label for="{{props.id}}">
+        {{props.title}}<span style="color: red" [hidden]="notRequired">*</span>
+    </label>
+    <ng-content></ng-content>
+    <div [hidden]="hiddeError" style="color: red">
+        {{props.notValidTitle}}
+    </div>
+</div>

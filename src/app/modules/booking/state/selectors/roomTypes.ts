@@ -1,7 +1,12 @@
 import {createSelector} from '@ngrx/store';
-import {selectFeature} from './states';
+import {selectBookingModuleState} from '../index';
+
+export const selectRoomTypesState = createSelector(
+    selectBookingModuleState,
+        state => state.roomTypes
+);
 
 export const getRoomTypes = createSelector(
-    selectFeature,
+    selectRoomTypesState,
         state => state.types
 );

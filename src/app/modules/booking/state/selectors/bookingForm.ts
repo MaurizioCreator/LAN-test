@@ -1,17 +1,23 @@
 import {createSelector} from '@ngrx/store';
-import {selectBookingFeature} from './states';
+import {selectBookingModuleState} from '../index';
 
-export const getNotSent = createSelector(
-    selectBookingFeature,
+
+export  const selectBookingFormState = createSelector(
+    selectBookingModuleState,
+        state => state.bookingForm
+);
+
+export const selectNotSent = createSelector(
+    selectBookingFormState,
     state => state.notSent
 );
 
-export const getLookCountInput = createSelector(
-    selectBookingFeature,
+export const selectLockCountInput = createSelector(
+    selectBookingFormState,
         state => state.lockCountInput
 );
 
-export const getLookCheckbox = createSelector(
-    selectBookingFeature,
+export const selectLockCheckbox = createSelector(
+    selectBookingFormState,
         state => state.lockCheckbox
 );

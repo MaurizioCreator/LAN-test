@@ -9,66 +9,51 @@
             novalidate
             (ngSubmit)="submit()"
         >
-            <div class="input_container">
-                <label for="input_first_name">
-                    Введите имя<span style="color: red">*</span>
-                </label>
+            <app-input
+                [props]="inputsInfo[0]"
+                [hiddeError]="bookingForm.controls.firstName.valid || notSent"
+            >
                 <input
                     type="text"
                     id="input_first_name"
                     formControlName="firstName"
-
                 >
-                <div [hidden]="bookingForm.controls.firstName.valid || notSent" style="color: red">
-                    Некорректные данные
-                </div>
-            </div>
-
-
-            <div class="input_container">
-                <label for="input_last_name">
-                    Введите фамилию<span style="color: red">*</span>
-                </label>
+            </app-input>
+            <app-input
+                [props]="inputsInfo[1]"
+                [hiddeError]="bookingForm.controls.lastName.valid || notSent"
+            >
                 <input
                     type="text"
                     id="input_last_name"
                     formControlName="lastName"
                 >
-                <div [hidden]="bookingForm.controls.lastName.valid || notSent" style="color: red">
-                    Некорректные данные
-                </div>
-            </div>
-
-
-            <div class="input_container">
-                <label for="input_patronymic_name">
-                    Введите отчество
-                </label>
+            </app-input>
+            <app-input
+                [props]="inputsInfo[2]"
+                [hiddeError]="bookingForm.controls.patronymicName.valid || notSent"
+                [notRequired]="true"
+            >
                 <input
                     type="text"
                     id="input_patronymic_name"
                     formControlName="patronymicName"
                 >
-                <div [hidden]="bookingForm.controls.patronymicName.valid || notSent" style="color: red">
-                    Некорректные данные
-                </div>
-
-            </div>
-
-            <div class="input_container">
-                <label for="input_birthday">
-                    Введите дату рождения
-                </label>
+            </app-input>
+            <app-input
+                [props]="inputsInfo[3]"
+                [hiddeError]="true"
+                [notRequired]="true"
+            >
                 <input
                     type="date"
                     id="input_birthday"
                     formControlName="birthday"
                 >
-            </div>
-
+            </app-input>
             <div class="input_container">
                 <label for="select_room_type">
-                    Выбирите тип номера<span style="color: red">*</span>
+                    Выберите тип номера<span style="color: red">*</span>
                 </label>
                 <select id="select_room_type" formControlName="roomType" (change)="setCountOfGuests()">
                     <option [ngValue]="null" selected disabled>Выберите тип номера</option>
@@ -80,12 +65,10 @@
                     Заполните поле
                 </div>
             </div>
-
-
-            <div class="input_container">
-                <label for="count_of_guests">
-                    Введите количество гостей<span style="color: red">*</span>
-                </label>
+            <app-input
+                [props]="inputsInfo[4]"
+                [hiddeError]="bookingForm.controls.countOfGuests.valid || notSent"
+            >
                 <input
                     type="number"
                     [max]="maxValueGuests"
@@ -93,41 +76,27 @@
                     formControlName="countOfGuests"
                     [attr.disabled]="lockCountInput ? '' : null"
                 >
-                <div [hidden]="bookingForm.controls.countOfGuests.valid || notSent" style="color: red">
-                    Некорректное количество гостей для данного типа номера
-                </div>
-            </div>
-
-            <div class="input_container">
-                <label for="input_start_date">
-                    Выберите дату заезда<span style="color: red">*</span>
-                </label>
+            </app-input>
+            <app-input
+                [props]="inputsInfo[5]"
+                [hiddeError]="bookingForm.controls.startDate.valid || notSent"
+            >
                 <input
                     type="date"
                     id="input_start_date"
                     formControlName="startDate"
                 >
-                <div [hidden]="bookingForm.controls.startDate.valid || notSent" style="color: red">
-                    Заполните поле
-                </div>
-            </div>
-
-
-            <div class="input_container">
-                <label for="input_end_date">
-                    Выберите дату выезда<span style="color: red">*</span>
-                </label>
+            </app-input>
+            <app-input
+                [props]="inputsInfo[6]"
+                [hiddeError]="bookingForm.controls.endDate.valid || notSent"
+            >
                 <input
                     type="date"
                     id="input_end_date"
                     formControlName="endDate"
                 >
-                <div [hidden]="bookingForm.controls.endDate.valid || notSent" style="color: red">
-                    Заполните поле
-                </div>
-            </div>
-
-
+            </app-input>
             <div class="checkbox">
                 <label for="input_with_animal">
                     С животными
@@ -139,11 +108,11 @@
                     [attr.disabled]="lockCheckbox ? '' : null"
                 >
             </div>
-            <div [hidden]="notSent || bookingForm.valid" style="color: red">
+            <div [hidden]="notSent || bookingForm.valid" style="color: red; margin-bottom: 10px">
                 Заполните все необходимые поля корректно
             </div>
             <button
-                class="btn_b"
+                class="form_btn"
                 type="submit"
             >
                 Забронировать

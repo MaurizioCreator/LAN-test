@@ -14,10 +14,10 @@ const BookingFormReducer = createReducer(
     ...BOOKING_FORM_REDUCERS,
 );
 
-export function reducer(state: RoomTypeState, action: Action) {
+export function roomTypesReducer(state: RoomTypeState, action: Action) {
     return BookingReducer(state, action);
 }
 
-export function bookingReducer(state: BookingFormState, action: Action) {
+export function bookingFormReducer(state: BookingFormState, action: Action) {
     return BookingFormReducer(state, action);
 }
